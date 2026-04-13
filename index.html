@@ -1,43 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-		/>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Alex Meyer — Software Engineering Student</title>
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+    <link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
+    <style>
+      :root {
+        --accent: #7f77dd;
+        --accent-light: #afa9ec;
+        --accent-dim: #3c3489;
+        --teal: #1d9e75;
+        --coral: #d85a30;
+        --muted: #b4b2a9;
+      }
 
-		<title>reveal.js</title>
+      .reveal {
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
 
-		<link rel="stylesheet" href="dist/reset.css" />
-		<link rel="stylesheet" href="dist/reveal.css" />
-		<link rel="stylesheet" href="dist/theme/black.css" />
+      /* --- Hero slide --- */
+      .hero-name {
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: -1px;
+        margin: 0;
+        line-height: 1.1;
+      }
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="dist/plugin/highlight/monokai.css" />
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+      .hero-title {
+        font-size: 1.2rem;
+        color: var(--accent-light);
+        margin: 0.5rem 0 1.5rem;
+        font-weight: 400;
+      }
 
-		<script src="dist/reveal.js"></script>
-		<script src="dist/plugin/notes.js"></script>
-		<script src="dist/plugin/markdown.js"></script>
-		<script src="dist/plugin/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+      .hero-links {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
-			});
-		</script>
-	</body>
+      .pill {
+        border: 1px solid var(--accent-light);
+        color: var(--accent-light);
+        padding: 0.3rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        text-decoration: none;
+      }
+
+      /* --- Section title --- */
+      .section-eyebrow {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: var(--accent-light);
+        margin-bottom: 0.4rem;
+      }
+
+      /* --- About --- */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        text-align: left;
+        margin-top: 1.2rem;
+      }
+
+      .about-block {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(175, 169, 236, 0.25);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+      }
+
+      .about-block h3 {
+        color: var(--accent-light);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin: 0 0 0.6rem;
+      }
+
+      .about-block p {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* --- Skills --- */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 1.2rem;
+        text-align: left;
+      }
+
+      .skill-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(175, 169, 236, 0.2);
+        border-radius: 10px;
+        padding: 1rem;
+      }
+
+      .skill-card .skill-category {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent-light);
+        margin: 0 0 0.5rem;
+      }
+
+      .skill-card .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .tag {
+        background: rgba(127, 119, 221, 0.2);
+        color: var(--accent-light);
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 5px;
+      }
+
+      /* --- Projects --- */
+      .project-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(175, 169, 236, 0.2);
+        border-radius: 12px;
+        padding: 1.4rem 1.6rem;
+        text-align: left;
+        margin-bottom: 1rem;
+      }
+
+      .project-card h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.15rem;
+        color: #fff;
+      }
+
+      .project-card p {
+        font-size: 0.88rem;
+        color: #bbb;
+        margin: 0 0 0.8rem;
+        line-height: 1.6;
+      }
+
+      .project-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+
+      .badge {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.55rem;
+        border-radius: 4px;
+      }
+
+      .badge-teal {
+        background: rgba(29, 158, 117, 0.2);
+        color: #5dcaa5;
+      }
+
+      .badge-coral {
+        background: rgba(216, 90, 48, 0.2);
+        color: #f0997b;
+      }
+
+      .badge-purple {
+        background: rgba(127, 119, 221, 0.2);
+        color: var(--accent-light);
+      }
+
+      /* --- Experience / Timeline --- */
+      .timeline {
+        text-align: left;
+        margin-top: 1rem;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background: rgba(175, 169, 236, 0.3);
+      }
+
+      .tl-item {
+        padding: 0 0 1.2rem 1.8rem;
+        position: relative;
+      }
+
+      .tl-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--accent);
+        border: 2px solid #1a1a2e;
+      }
+
+      .tl-item .tl-period {
+        font-size: 0.75rem;
+        color: var(--accent-light);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+      }
+
+      .tl-item h3 {
+        margin: 0.2rem 0 0.1rem;
+        font-size: 1rem;
+        color: #fff;
+      }
+
+      .tl-item .tl-org {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0 0 0.4rem;
+      }
+
+      .tl-item p {
+        font-size: 0.85rem;
+        color: #aaa;
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* --- Contact --- */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .contact-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(175, 169, 236, 0.2);
+        border-radius: 10px;
+        padding: 1rem 1.2rem;
+        text-align: left;
+      }
+
+      .contact-item .ci-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--accent-light);
+        margin: 0 0 0.3rem;
+      }
+
+      .contact-item .ci-value {
+        font-size: 0.95rem;
+        color: #ddd;
+        margin: 0;
+      }
+
+      /* --- Helpers --- */
+      .accent { color: var(--accent-light); }
+      .reveal h2 { text-transform: none; }
+      .reveal .slides section { padding: 0 2rem; }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- 1. HERO -->
+        <section>
+          <p class="section-eyebrow">Hi, I'm</p>
+          <h1 class="hero-name">Alex Meyer</h1>
+          <p class="hero-title">Software Engineering Student · BSc Computer Science · TU Wien, 3rd year</p>
+          <div class="hero-links">
+            <a class="pill" href="#">github.com/alexmeyer</a>
+            <a class="pill" href="#">linkedin.com/in/alexmeyer</a>
+            <a class="pill" href="#">alexmeyer.dev</a>
+            <a class="pill" href="#">alex@example.com</a>
+          </div>
+        </section>
+
+        <!-- 2. ABOUT -->
+        <section>
+          <p class="section-eyebrow">About me</p>
+          <h2>Who I am</h2>
+          <div class="about-grid">
+            <div class="about-block">
+              <h3>Background</h3>
+              <p>
+                Third-year CS student at TU Wien with a passion for building reliable,
+                user-centred software. Originally from Linz, now based in Vienna.
+              </p>
+            </div>
+            <div class="about-block">
+              <h3>Focus areas</h3>
+              <p>
+                Full-stack web development, distributed systems, and machine learning
+                engineering. Currently exploring Rust for systems-level work.
+              </p>
+            </div>
+            <div class="about-block">
+              <h3>Currently</h3>
+              <p>
+                Writing my bachelor's thesis on serverless cold-start latency optimisation.
+                Looking for a summer internship in backend or platform engineering.
+              </p>
+            </div>
+            <div class="about-block">
+              <h3>Outside code</h3>
+              <p>
+                Board-game enthusiast, amateur road cyclist, and occasional open-source
+                contributor. Organise monthly CTF nights at university.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. SKILLS -->
+        <section>
+          <p class="section-eyebrow">Technical skills</p>
+          <h2>What I work with</h2>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <p class="skill-category">Languages</p>
+              <div class="skill-tags">
+                <span class="tag">Python</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Java</span>
+                <span class="tag">C</span>
+                <span class="tag">Rust</span>
+                <span class="tag">SQL</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-category">Frontend</p>
+              <div class="skill-tags">
+                <span class="tag">React</span>
+                <span class="tag">Next.js</span>
+                <span class="tag">Tailwind</span>
+                <span class="tag">Figma</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-category">Backend</p>
+              <div class="skill-tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">Spring Boot</span>
+                <span class="tag">GraphQL</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-category">Infra & Cloud</p>
+              <div class="skill-tags">
+                <span class="tag">Docker</span>
+                <span class="tag">Kubernetes</span>
+                <span class="tag">AWS</span>
+                <span class="tag">Terraform</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-category">Data & ML</p>
+              <div class="skill-tags">
+                <span class="tag">PyTorch</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">PostgreSQL</span>
+                <span class="tag">Redis</span>
+              </div>
+            </div>
+            <div class="skill-card">
+              <p class="skill-category">Practices</p>
+              <div class="skill-tags">
+                <span class="tag">Git / CI/CD</span>
+                <span class="tag">TDD</span>
+                <span class="tag">Agile</span>
+                <span class="tag">REST design</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. PROJECTS -->
+        <section>
+          <p class="section-eyebrow">Projects</p>
+          <h2>Things I've built</h2>
+
+          <div class="project-card">
+            <h3>StudySync <span style="font-weight:400; font-size:0.85rem; color: var(--muted);">— collaborative study scheduler</span></h3>
+            <p>
+              Full-stack web app that lets student groups sync timetables, create shared
+              revision sessions, and receive smart reminders via email and push. Handles
+              300 + active users across TU Wien.
+            </p>
+            <div class="project-stack">
+              <span class="badge badge-teal">Next.js</span>
+              <span class="badge badge-teal">FastAPI</span>
+              <span class="badge badge-teal">PostgreSQL</span>
+              <span class="badge badge-coral">Docker</span>
+              <span class="badge badge-coral">Railway</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <h3>LambdaWatch <span style="font-weight:400; font-size:0.85rem; color: var(--muted);">— serverless latency profiler</span></h3>
+            <p>
+              CLI tool + dashboard for measuring and visualising cold-start latency across
+              AWS Lambda, Cloudflare Workers, and Vercel Edge Functions. Basis of my bachelor's thesis.
+            </p>
+            <div class="project-stack">
+              <span class="badge badge-purple">Rust</span>
+              <span class="badge badge-purple">React</span>
+              <span class="badge badge-coral">AWS SDK</span>
+              <span class="badge badge-teal">open source</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. EXPERIENCE -->
+        <section>
+          <p class="section-eyebrow">Experience & Education</p>
+          <h2>Where I've been</h2>
+          <div class="timeline">
+            <div class="tl-item">
+              <p class="tl-period">Oct 2023 — present</p>
+              <h3>Bachelor's Thesis Researcher</h3>
+              <p class="tl-org">TU Wien, Distributed Systems Group</p>
+              <p>Benchmarking cold-start latency in serverless runtimes and designing a mitigation framework. Supervised by Prof. Dr. Eva Kühn.</p>
+            </div>
+            <div class="tl-item">
+              <p class="tl-period">Jul — Sep 2023</p>
+              <h3>Software Engineering Intern</h3>
+              <p class="tl-org">Dynatrace, Linz</p>
+              <p>Contributed to the backend service powering the Davis AI anomaly-detection pipeline. Migrated three legacy REST endpoints to gRPC, reducing average latency by 40 %.</p>
+            </div>
+            <div class="tl-item">
+              <p class="tl-period">Sep 2021 — present</p>
+              <h3>BSc Computer Science</h3>
+              <p class="tl-org">TU Wien (GPA 1.4 / 1.0 scale)</p>
+              <p>Core modules: Algorithms, Distributed Systems, Machine Learning, Operating Systems, Software Architecture.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. CONTACT -->
+        <section>
+          <p class="section-eyebrow">Get in touch</p>
+          <h2>Let's talk</h2>
+          <p style="color: #bbb; font-size: 0.95rem; margin: 0.5rem 0 1rem;">
+            Open to internship offers, research collaborations, and interesting side projects.
+          </p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <p class="ci-label">Email</p>
+              <p class="ci-value">alex.meyer@student.tuwien.ac.at</p>
+            </div>
+            <div class="contact-item">
+              <p class="ci-label">GitHub</p>
+              <p class="ci-value">github.com/alexmeyer</p>
+            </div>
+            <div class="contact-item">
+              <p class="ci-label">LinkedIn</p>
+              <p class="ci-value">linkedin.com/in/alexmeyer</p>
+            </div>
+            <div class="contact-item">
+              <p class="ci-label">Portfolio</p>
+              <p class="ci-value">alexmeyer.dev</p>
+            </div>
+          </div>
+          <p style="margin-top: 2rem; font-size: 0.8rem; color: #666;">
+            Press <kbd style="background:#333; border-radius:4px; padding: 2px 6px;">?</kbd> for keyboard shortcuts &nbsp;·&nbsp; Arrow keys or swipe to navigate
+          </p>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="dist/plugin/notes.js"></script>
+    <script src="dist/plugin/markdown.js"></script>
+    <script src="dist/plugin/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        transition: "slide",
+        transitionSpeed: "fast",
+        backgroundTransition: "fade",
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
 </html>
